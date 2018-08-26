@@ -1,6 +1,6 @@
 //
-//  ImgaeMosaicerView.m
-//  TMImageMosaicer
+//  GraffitiView.m
+//  RNImageGraffiti
 //
 //  Created by 张国忠 on 2018/8/26.
 //  Copyright © 2018年 Facebook. All rights reserved.

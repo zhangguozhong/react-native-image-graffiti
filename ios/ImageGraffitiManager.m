@@ -1,6 +1,6 @@
 //
-//  ImageMosaicerManager.m
-//  TMImageMosaicer
+//  ImageGraffitiManager.m
+//  RNImageGraffiti
 //
 //  Created by 张国忠 on 2018/8/26.
 //  Copyright © 2018年 Facebook. All rights reserved.
@@ -12,7 +12,7 @@
 
 @interface ImageGraffitiManager ()
 
-@property (nonatomic, copy) RCTResponseSenderBlock completionBlock;
+@property (nonatomic, copy) RCTResponseSenderBlock callback;
 
 @end
 
@@ -20,7 +20,7 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(showImageMosaicer:(NSDictionary *)options completionBlock:(RCTResponseSenderBlock)completionBlock) {
+RCT_EXPORT_METHOD(showGraffitiImage:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback) {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -29,8 +29,8 @@ RCT_EXPORT_METHOD(showImageMosaicer:(NSDictionary *)options completionBlock:(RCT
         viewController.viewSize = CGSizeZero;
         viewController.dismissCompletionBlock = ^(id imageData)
         {
-            if (completionBlock) {
-                completionBlock(@[imageData]);
+            if (callback) {
+                callback(@[imageData]);
             }
         };
         

@@ -1,6 +1,15 @@
 
-import { NativeModules } from 'react-native';
+import {NativeModules} from 'react-native';
+const {ImageGraffitiManager} = NativeModules;
 
-const { RNImageGraffiti } = NativeModules;
+export default class RNImageGraffiti {
 
-export default RNImageGraffiti;
+    static show(options, callback) {
+        ImageGraffitiManager.showGraffitiImage(options, (res)=>{
+
+            if (callback){
+                callback(res);
+            }
+        });
+    }
+};
