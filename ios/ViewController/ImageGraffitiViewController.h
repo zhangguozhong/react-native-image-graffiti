@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef void(^dismissCompletionBlock)(id);
+#import "GlobalDefines.h"
 
 @interface ImageGraffitiViewController : UIViewController
 

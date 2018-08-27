@@ -12,7 +12,7 @@
 
 @interface ImageGraffitiManager ()
 
-@property (nonatomic, copy) RCTResponseSenderBlock callback;
+@property (nonatomic,copy) RCTResponseSenderBlock callback;
 
 @end
 
@@ -27,15 +27,14 @@ RCT_EXPORT_METHOD(showGraffitiImage:(NSDictionary *)options callback:(RCTRespons
         ImageGraffitiViewController *viewController = [[ImageGraffitiViewController alloc] init];
         viewController.surfaceImageData = options[@"data"];
         viewController.viewSize = CGSizeZero;
-        viewController.dismissCompletionBlock = ^(id imageData)
+        viewController.dismissCompletionBlock = ^(NSDictionary *imageData)
         {
             if (callback) {
                 callback(@[imageData]);
             }
         };
         
-        UIViewController *rootController = RCTPresentedViewController();
-        [rootController presentViewController:viewController animated:YES completion:nil];
+        [RCTPresentedViewController() presentViewController:viewController animated:YES completion:nil];
     });
 }
 

@@ -10,6 +10,7 @@
 		776FFF382132E15A00852218 /* ImageGraffitiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FFF312132E15A00852218 /* ImageGraffitiManager.m */; };
 		776FFF392132E15A00852218 /* ImageGraffitiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FFF332132E15A00852218 /* ImageGraffitiViewController.m */; };
 		776FFF3A2132E15A00852218 /* GraffitiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FFF352132E15A00852218 /* GraffitiView.m */; };
+		776FFFA021338F6200852218 /* GlobalDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 776FFF9F21338F6200852218 /* GlobalDefines.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,8 @@
 		776FFF352132E15A00852218 /* GraffitiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraffitiView.m; sourceTree = "<group>"; };
 		776FFF362132E15A00852218 /* ImageGraffitiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGraffitiViewController.h; sourceTree = "<group>"; };
 		776FFF372132E15A00852218 /* ImageGraffitiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGraffitiManager.h; sourceTree = "<group>"; };
+		776FFF9E21338F6200852218 /* GlobalDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefines.h; sourceTree = "<group>"; };
+		776FFF9F21338F6200852218 /* GlobalDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalDefines.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				776FFF9D21338F5000852218 /* GlobalDefines */,
 				776FFF322132E15A00852218 /* ViewController */,
 				776FFF372132E15A00852218 /* ImageGraffitiManager.h */,
 				776FFF312132E15A00852218 /* ImageGraffitiManager.m */,
@@ -72,6 +76,15 @@
 				776FFF352132E15A00852218 /* GraffitiView.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		776FFF9D21338F5000852218 /* GlobalDefines */ = {
+			isa = PBXGroup;
+			children = (
+				776FFF9E21338F6200852218 /* GlobalDefines.h */,
+				776FFF9F21338F6200852218 /* GlobalDefines.m */,
+			);
+			path = GlobalDefines;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				776FFF392132E15A00852218 /* ImageGraffitiViewController.m in Sources */,
+				776FFFA021338F6200852218 /* GlobalDefines.m in Sources */,
 				776FFF3A2132E15A00852218 /* GraffitiView.m in Sources */,
 				776FFF382132E15A00852218 /* ImageGraffitiManager.m in Sources */,
 			);

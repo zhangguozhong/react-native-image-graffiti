@@ -10,10 +10,6 @@
 #import "GraffitiView.h"
 #import <Photos/Photos.h>
 
-#define kBitsPerComponent (8)
-#define kBitsPerPixel (32)
-#define kPixelChannelCount (4)
-
 @interface ImageGraffitiViewController ()
 
 @property (nonatomic,strong) GraffitiView *graffitiView;
@@ -60,7 +56,10 @@
 }
 - (void)clickBack
 {
-    [self dismissViewControllerAndCallback:nil];
+    [self dismissViewControllerAndCallback:@{
+                                             @"code":@(StorageCallbackCanceled),
+                                             @"imageData":[NSNull null],
+                                             @"path":@""}];
 }
 - (void)saveToPhoto
 {
@@ -172,7 +171,9 @@
 {
     [self checkPhotosPermissions:^(BOOL granted) {
         if (!granted) {
-            [self dismissViewControllerAndCallback:nil];
+            [self dismissViewControllerAndCallback:@{
+                                                     @"code":@(StorageCallbackNotPermission), @"message":@"",
+                                                     }];
             return;
         }
         
@@ -196,27 +197,34 @@
                     //加载图片数据
                     [[PHImageManager defaultManager] requestImageDataForAsset:selectedImageAsset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info)
                      {
-                         [self dismissViewControllerAndCallback:imageData];
+                         [self dismissViewControllerAndCallback:@{
+                                                                  @"code":@(StorageCallbackSuccess), @"imageData":imageData,
+                                                                  @"path":info[@"path"]}];
                      }];
                 }else
                 {
-                    [self dismissViewControllerAndCallback:nil];
+                    [self dismissViewControllerAndCallback:@{
+                                                             @"code":@(StorageCallbackFailed), @"imageData":[NSNull null],
+                                                             @"path":@""}];
                 }
             }else
             {
-                [self dismissViewControllerAndCallback:nil];
+                [self dismissViewControllerAndCallback:@{
+                                                         @"code":@(StorageCallbackFailed), @"imageData":[NSNull null],
+                                                         @"path":@""}];
             }
         }];
     }];
 }
 
-- (void)dismissViewControllerAndCallback:(NSData *)imageData
+- (void)dismissViewControllerAndCallback:(NSDictionary *)imageData
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:^{
             if (self.dismissCompletionBlock)
             {
-                self.dismissCompletionBlock(imageData?imageData:[NSNull null]);
+                //返回结果处理
+                self.dismissCompletionBlock(imageData);
             }
         }];
     });
